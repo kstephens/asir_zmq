@@ -7,6 +7,8 @@ when /java/i
 end
 
 $: << File.expand_path("../../lib", __FILE__)
+$:.unshift File.expand_path('../../../asir/lib', __FILE__) # FIXME
+
 require 'asir'
 require 'asir/coder/marshal'
 ASIR::Log.enabled = true unless ENV['ASIR_EXAMPLE_SILENT']

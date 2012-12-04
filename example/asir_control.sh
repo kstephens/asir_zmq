@@ -12,29 +12,6 @@ args="${args:-ALL}"
 
 case "$args"
 in
-  *webrick*|*ALL*)
-
-$asir start webrick worker
-sleep 1
-$asir pid webrick worker
-if $asir alive webrick worker; then
-  echo "alive webrick worker"
-fi
-
-ruby "$dir/asir_control_client_http.rb"
-sleep 1
-
-$asir stop webrick worker
-sleep 1
-$asir pid webrick worker
-
-;;
-esac
-
-#############################
-
-case "$args"
-in
   *zmq*|*ALL*)
 
 $asir start zmq worker
@@ -50,33 +27,6 @@ sleep 1
 $asir stop zmq worker
 sleep 1
 $asir pid zmq worker
-
-;;
-esac
-
-#############################
-
-case "$args"
-in
-  *resque*|*ALL*)
-
-$asir start resque conduit
-sleep 1
-if $asir alive resque conduit; then
-  echo "resque conduit alive"
-fi
-$asir start resque worker
-sleep 1
-$asir pid resque worker
-if $asir alive resque worker; then
-  echo "resque worker alive"
-fi
-
-ruby "$dir/asir_control_client_resque.rb"
-sleep 1
-$asir stop resque worker
-sleep 1
-$asir stop resque conduit
 
 ;;
 esac
