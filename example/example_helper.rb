@@ -7,7 +7,7 @@ when /java/i
 end
 
 $: << File.expand_path("../../lib", __FILE__)
-$:.unshift File.expand_path('../../../asir/lib', __FILE__) # FIXME
+gem 'asir'
 
 require 'asir'
 require 'asir/coder/marshal'

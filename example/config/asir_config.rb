@@ -10,8 +10,7 @@ when :configure
 when :environment
   require 'rubygems'
 
-  # gem 'asir'
-  $:.unshift File.expand_path('../../../../asir/lib', __FILE__) # FIXME
+  gem 'asir', '~> 1.1.0'
 
   require 'asir'
   require 'asir/transport/file'
