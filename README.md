@@ -18,9 +18,12 @@ Or install it yourself as:
 
 ## Dependencies
 
-* gem install zmq
-** zmq 2.1.4 needs a zmq 2.x library.
-** On OS X Macports: sudo port install zmq22.
+### gem zmq
+
+gem zmq 2.1.4 needs a zmq 2.x library.
+Run "rake prereq" to install:
+* OS X: sudo port install zmq22.
+* Debian: sudo apt-get install libzmq-dev
 
 ## Usage
 

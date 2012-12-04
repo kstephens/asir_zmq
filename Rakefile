@@ -32,3 +32,16 @@ task :example do
   end
   ENV.delete("ASIR_EXAMPLE_SILENT")
 end
+
+######################################################################
+
+desc "Install system prerequites"
+task :prereq do
+  case RUBY_PLATFORM
+  when /darwin/i
+    sh "sudo port install zmq22"
+  when /linux/i
+    sh "sudo apt-get install libzmq-dev"
+  end
+end
+

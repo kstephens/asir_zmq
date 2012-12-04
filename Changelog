@@ -1,4 +1,9 @@
 2012-12-04  Kurt A. Stephens  <ks.git@kurtstephens.com>
 
+	* v1.1.1: New version.
+	* prereq: Run "rake prereq" to install ZMQ OS packages.
+
+2012-12-04  Kurt A. Stephens  <ks.git@kurtstephens.com>
+
 	* v1.1.0: Initial version: Pulled from asir v1.0.8+.
 
