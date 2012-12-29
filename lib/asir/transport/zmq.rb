@@ -49,8 +49,11 @@ module ASIR
         stream
       end
 
-      def _read stream, context
-        stream.recv 0
+      def _read stream, state
+        if data = stream.recv(0) and one_way
+          q, data = data.split(/ /, 2)
+        end
+        data
       end
 
       def queue
