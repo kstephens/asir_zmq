@@ -71,7 +71,7 @@ module ASIR
       end
       def queue_
         @queue_ ||=
-          (queue.empty? ? queue : queue + " ").freeze
+          (queue.empty? ? "asir ": queue + " ").freeze
       end
 
       # server represents a receiving ZMQ endpoint.
