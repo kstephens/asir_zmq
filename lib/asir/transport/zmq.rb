@@ -30,20 +30,21 @@ module ASIR
         raise exc.class, "#{self.class} #{zmq_uri}: #{exc.message}", exc.backtrace
       end
 
-      def _receive_result message, opaque_result
-        return nil if one_way || message.one_way
+      def _receive_result state
+        return nil if one_way || state.message.one_way
         super
       end
 
-      def _send_result message, result, result_payload, stream, message_state
-        return nil if one_way || message.one_way
+      def _send_result state
+        return nil if one_way || state.message.one_way
         super
       end
 
-      def _write payload, stream, context
+      def _write payload, stream, state
         if one_way
-          q = context && (context[:queue] || context[:zmq_queue])
-          payload.insert(0, q || queue_)
+          q = state && state.message
+          q &&= q[:zmq_queue] || q[:queue]
+          payload.insert(0, q ? "#{q} " : queue_)
         end
         stream.send payload, 0
         stream

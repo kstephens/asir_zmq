@@ -1,7 +1,11 @@
 require 'rubygems'
 $:.unshift File.expand_path('../../lib', __FILE__)
 
-gem 'asir'
+if p = ENV['ASIR_LIB_PATH']
+  $:.unshift File.expand_path(p)
+else
+  gem 'asir'
+end
 require 'asir'
 
 module ASIR
